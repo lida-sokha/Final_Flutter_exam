@@ -1,0 +1,1 @@
+// Widget to disaply a restaurant stars chip
