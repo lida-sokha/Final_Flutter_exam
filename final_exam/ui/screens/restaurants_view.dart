@@ -118,10 +118,13 @@ class RestaurantTile extends StatelessWidget {
                       color: Colors.amber,
                     ),
                     label: Text(
-                      restaurant.comments
-                          .map((c) => c.stars.toDouble())
-                          .reduce((a, b) => a + b / 2)
-                          .toString(),
+                      restaurant.comments.isEmpty
+                            ? '0'
+                            : (restaurant.comments
+                                          .map((c) => c.stars.toDouble())
+                                          .reduce((a, b) => a + b) /
+                                      restaurant.comments.length)
+                                  .toStringAsFixed(1),
                     ),
                   ),
 
@@ -143,3 +146,4 @@ class RestaurantTile extends StatelessWidget {
     );
   }
 }
+
