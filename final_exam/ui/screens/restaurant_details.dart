@@ -63,7 +63,13 @@ class _RestaurantDetailViewState extends State<RestaurantDetailView> {
                     const SizedBox(width: 8),
                     Chip(
                       avatar: const Icon(Icons.star, color: Colors.amber),
-                      label: Text(restaurant.stars.toString()),
+                      label: Text(restaurant.comments.isEmpty
+                            ? '0'
+                            : (restaurant.comments
+                                          .map((c) => c.stars.toDouble())
+                                          .reduce((a, b) => a + b) /
+                                      restaurant.comments.length)
+                                  .toStringAsFixed(1)),
                     ),
                   ],
                 ),
@@ -116,3 +122,4 @@ class _RestaurantDetailViewState extends State<RestaurantDetailView> {
     );
   }
 }
+
